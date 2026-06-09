@@ -1,70 +1,81 @@
-# Getting Started with Create React App
+# 🗳️ Polling App – Real-Time Voting Platform
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Polling App is a full-featured polling platform built with **React**, **Supabase**, and **Material-UI**. It supports multiple poll types, real-time vote tracking, quiz functionality, and detailed analytics — all without custom backend code (thanks to Supabase).
 
-## Available Scripts
+## 🚀 Overview
 
-In the project directory, you can run:
+Polling App was built to demonstrate real-time data handling, role-based interactions, and a polished user experience without writing a custom backend. It leverages Supabase for authentication, database, and real-time subscriptions, while React and Material-UI handle the frontend.
 
-### `npm start`
+## ✨ Key Features
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+### For Poll Creators
+- Create polls with **Multiple Choice**, **Quiz** (with correct answers), or **Rating Scale** (1-5 stars)
+- Set optional **expiry dates** for polls
+- View real-time vote counts and percentages
+- See detailed **analytics** (bar chart / pie chart)
+- Receive **push notifications** when someone votes on your poll
+- Delete polls you created
+- Dark/Light theme toggle
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+### For Voters
+- Browse active polls from all users
+- Vote only once per poll (prevents duplicate votes)
+- Get **instant feedback** on quiz answers (correct/incorrect)
+- Leave optional feedback
+- View poll results after voting
 
-### `npm test`
+### Real-Time Features
+- Live vote counts update without refreshing
+- Push notifications when someone votes on your poll
+- Responsive design (mobile + desktop)
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## 🛠 Tech Stack
 
-### `npm run build`
+| Layer | Technology |
+|-------|------------|
+| **Frontend** | React 18, Material-UI (MUI) |
+| **Backend & DB** | Supabase (PostgreSQL + Realtime) |
+| **Authentication** | Supabase Auth |
+| **State Management** | React Hooks (useState, useEffect, useContext) |
+| **Styling** | Emotion (MUI integration) |
+| **Charts** | Custom SVG visualizations |
+| **Icons** | Material-UI Icons |
+| **Deployment** | Netlify (frontend) + Supabase Cloud |
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## 🧠 System Design Highlights
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### 🔹 Real-Time Architecture (Without Custom Backend)
+- Used Supabase's **Realtime subscriptions** to listen for new votes
+- Votes appear instantly to poll creators without refreshing
+- Avoided building a separate WebSocket server
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### 🔹 Authentication & Authorization
+- Used Supabase Auth for secure user sign-in/sign-up
+- Implemented role-based access (creators vs voters)
+- Protected API routes using Supabase Row Level Security (RLS)
 
-### `npm run eject`
+### 🔹 Database Schema Design
+- Designed relational schema for `polls`, `votes`, and `users`
+- Used PostgreSQL with foreign keys and indexes
+- Implemented RLS policies to ensure users can only vote once per poll
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+### 🔹 Frontend State Management
+- Managed global theme state using React Context
+- Used local state for poll data, vote counts, and notifications
+- Implemented memoization (`React.memo`, `useCallback`, `useMemo`) for performance
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## 📦 Installation
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+```bash
+# Clone the repository
+git clone https://github.com/MuhammadShoaib1126/polling-app.git
+cd polling-app
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+# Install dependencies
+npm install
 
-## Learn More
+# Create .env file (see .env.example below)
+# Add your Supabase credentials
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+# Start development server
+npm run dev
