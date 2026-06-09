@@ -2,6 +2,7 @@
 
 Polling App is a full-featured polling platform built with **React**, **Supabase**, and **Material-UI**. It supports multiple poll types, real-time vote tracking, quiz functionality, and detailed analytics — all without custom backend code (thanks to Supabase).
 
+🔗 **Live Demo**: [https://polling-apps.netlify.app/](https://polling-apps.netlify.app/)
 ## 🚀 Overview
 
 Polling App was built to demonstrate real-time data handling, role-based interactions, and a polished user experience without writing a custom backend. It leverages Supabase for authentication, database, and real-time subscriptions, while React and Material-UI handle the frontend.
